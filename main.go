@@ -12,8 +12,10 @@ func greet(w http.ResponseWriter, r *http.Request) {
 }
 
 func health(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("OK")
-	fmt.Fprintf(w, "OK")
+	w.WriteHeader(http.StatusInternalServerError)
+	w.Write([]byte("500 - Something bad happened!"))
+	fmt.Println("500")
+	fmt.Fprintf(w, "500")
 }
 
 func main() {
